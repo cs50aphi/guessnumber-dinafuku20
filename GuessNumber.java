@@ -14,11 +14,12 @@ public class GuessNumber
         SmartComputer comp = new SmartComputer();
         HumanPlayer human = new HumanPlayer();
         System.out.println("Welcome to the game!");
-        // gives player option between a human or computer
+        // asks for range
         System.out.println("What's the highest number you'd like me to pick?");
         int range = kb.nextInt();
+        // generates random number
         int answer = (int)(Math.random()*range + 1);
-        // create a loop that continues until player guesses correctly
+        // ask player to guess
         System.out.println("I'm thinking of a number between 1 and " + range);
         System.out.println("What's your guess?");
         while (!won)
@@ -42,7 +43,9 @@ public class GuessNumber
                 System.out.println("You won in " + numGuesses + " guesses!");
             }
         }
+        // set result to 0 for the computer
         result = 0;
+        // set win condition to false for the computer
         won = false;
 
         // computer plays
@@ -51,6 +54,7 @@ public class GuessNumber
         // int lastGuess = 0;
         while (!won)
         {
+            // provide the max value for a number and result
             int guess = comp.play(result, range);
             // lastGuess = guess;
             System.out.println("Computer guessed " + guess);
@@ -71,7 +75,9 @@ public class GuessNumber
             {
                 won = true;
                 computerGuesses++;
+                // say how many guesses the computer and player won with
                 System.out.println("The computer won in " + computerGuesses + " guesses and you won in " + numGuesses + " guesses!");
+                // state who won or if it was a tie
                 if (numGuesses < computerGuesses)
                 {
                     System.out.println("Congratulations! You beat the computer!");
